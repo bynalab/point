@@ -1,8 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_animate_on_scroll/flutter_animate_on_scroll.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -27,23 +23,52 @@ class _MapScreenState extends State<MapScreen> {
       body: Stack(
         children: [
           FlutterMap(
-            options: MapOptions(
+            options: const MapOptions(
               backgroundColor: Colors.black,
-              // initialCenter: LatLng(51.509364, -0.128928),
-              initialZoom: 5,
+              initialCenter: LatLng(59.9343, 30.3351),
             ),
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.bynalab.point',
               ),
-              MarkerLayer(
-                markers: const [
-                  Marker(
-                    point: LatLng(30, 40),
-                    width: 80,
-                    height: 80,
-                    child: FlutterLogo(),
+              const MarkerLayer(
+                markers: [
+                  CustomMaker(
+                    point: LatLng(59.9445, 30.3350),
+                    child: CustomerMakerItem(
+                      distance: '10,3 mn P',
+                    ),
+                  ),
+                  CustomMaker(
+                    point: LatLng(59.9349, 30.3420),
+                    child: CustomerMakerItem(
+                      distance: '11 mn P',
+                    ),
+                  ),
+                  CustomMaker(
+                    point: LatLng(59.9345, 30.3580),
+                    child: CustomerMakerItem(
+                      distance: '7,8 mn P',
+                    ),
+                  ),
+                  CustomMaker(
+                    point: LatLng(59.9200, 30.3070),
+                    child: CustomerMakerItem(
+                      distance: '13,3 mn P',
+                    ),
+                  ),
+                  CustomMaker(
+                    point: LatLng(59.9348, 30.3158),
+                    child: CustomerMakerItem(
+                      distance: '8,5 mn P',
+                    ),
+                  ),
+                  CustomMaker(
+                    point: LatLng(59.9410, 30.3141),
+                    child: CustomerMakerItem(
+                      distance: '6,95 mn P',
+                    ),
                   ),
                 ],
               ),
@@ -63,9 +88,9 @@ class _MapScreenState extends State<MapScreen> {
                         flex: 4,
                         child: ZoomIn(
                           globalKey: GlobalKey(),
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           repeat: true,
-                          child: TextField(
+                          child: const TextField(
                             decoration: InputDecoration(
                               hintText: 'Saint Petersburg',
                               isDense: true,
@@ -96,13 +121,12 @@ class _MapScreenState extends State<MapScreen> {
                           ),
                         ),
                       ),
-                      // SizedBox(width: 10),
                       Expanded(
                         child: ZoomIn(
                           globalKey: GlobalKey(),
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           repeat: true,
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 20,
                             backgroundColor: Colors.white,
                             child: Icon(Icons.sort),
@@ -124,7 +148,7 @@ class _MapScreenState extends State<MapScreen> {
                               children: [
                                 ZoomIn(
                                   globalKey: GlobalKey(),
-                                  duration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 1),
                                   repeat: true,
                                   child: !showLayerMenu
                                       ? GestureDetector(
@@ -132,7 +156,7 @@ class _MapScreenState extends State<MapScreen> {
                                             setState(
                                                 () => showLayerMenu = true);
                                           },
-                                          child: CircleAvatar(
+                                          child: const CircleAvatar(
                                             radius: 25,
                                             backgroundColor: Colors.white70,
                                             child: Icon(
@@ -141,12 +165,13 @@ class _MapScreenState extends State<MapScreen> {
                                             ),
                                           ),
                                         )
-                                      : SizedBox.shrink(),
+                                      : const SizedBox.shrink(),
                                 ),
                                 if (showLayerMenu)
                                   Container(
                                     width: 200,
-                                    padding: EdgeInsets.symmetric(vertical: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(15),
@@ -157,46 +182,46 @@ class _MapScreenState extends State<MapScreen> {
                                       children: [
                                         Container(
                                           color: Colors.transparent,
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
                                           ),
-                                          child: Row(
-                                            children: const [
+                                          child: const Row(
+                                            children: [
                                               Icon(Iconsax.security_user),
                                               SizedBox(width: 10),
                                               Text('Cosy areas'),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         Container(
                                           color: Colors.transparent,
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
                                           ),
-                                          child: Row(
-                                            children: const [
+                                          child: const Row(
+                                            children: [
                                               Icon(Icons.wallet_outlined),
                                               SizedBox(width: 10),
                                               Text('Price'),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         Container(
                                           color: Colors.transparent,
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                             horizontal: 20,
                                           ),
-                                          child: Row(
-                                            children: const [
+                                          child: const Row(
+                                            children: [
                                               Icon(Iconsax.security_user),
                                               SizedBox(width: 10),
                                               Text('Infrastructure'),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         GestureDetector(
                                           onTap: () {
                                             controller
@@ -209,11 +234,11 @@ class _MapScreenState extends State<MapScreen> {
                                           },
                                           child: Container(
                                             color: Colors.transparent,
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                               horizontal: 20,
                                             ),
-                                            child: Row(
-                                              children: const [
+                                            child: const Row(
+                                              children: [
                                                 Icon(Iconsax.security_user),
                                                 SizedBox(width: 10),
                                                 Text('Without any layer'),
@@ -226,24 +251,23 @@ class _MapScreenState extends State<MapScreen> {
                                   ).animate(
                                     onPlay: (controller) {
                                       this.controller = controller;
-                                      // controller.repeat(reverse: true);
                                     },
                                   ).fadeIn(
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                   )
                               ],
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ZoomIn(
                                   globalKey: GlobalKey(),
-                                  duration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 1),
                                   repeat: true,
                                   child: GestureDetector(
                                     onTap: () {},
-                                    child: CircleAvatar(
+                                    child: const CircleAvatar(
                                       radius: 25,
                                       backgroundColor: Colors.white70,
                                       child: Icon(
@@ -255,10 +279,10 @@ class _MapScreenState extends State<MapScreen> {
                                 ),
                                 ZoomIn(
                                   globalKey: GlobalKey(),
-                                  duration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 1),
                                   repeat: true,
                                   child: Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       color: Colors.white70,
                                       borderRadius: BorderRadius.circular(20),
@@ -289,7 +313,7 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 115),
+                    const SizedBox(height: 115),
                   ],
                 ),
               ],
@@ -299,4 +323,46 @@ class _MapScreenState extends State<MapScreen> {
       ),
     );
   }
+}
+
+class CustomerMakerItem extends StatelessWidget {
+  final String distance;
+  const CustomerMakerItem({super.key, required this.distance});
+
+  @override
+  Widget build(BuildContext context) {
+    return ZoomIn(
+      globalKey: GlobalKey(),
+      delay: const Duration(seconds: 1),
+      repeat: true,
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.amber[700],
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+        child: Text(
+          distance,
+          style: const TextStyle(
+            fontSize: 10,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomMaker extends Marker {
+  const CustomMaker({
+    required super.point,
+    required super.child,
+    super.height = 40,
+    super.width = 70,
+  });
 }
