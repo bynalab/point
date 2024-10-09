@@ -1,27 +1,21 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate_on_scroll/flutter_animate_on_scroll.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:point/widgets/decorated_image.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: const [
-            Color(0xFFF6E8D8), // Soft beige
-            Color(0xFFFFF8EF), // Light cream
+          colors: [
+            Color(0xFFF6E8D8),
+            Color(0xFFFFF8EF),
           ],
         ),
       ),
@@ -45,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             globalKey: GlobalKey(),
                             duration: 2.seconds,
                             child: Container(
-                              padding: EdgeInsets.all(15),
+                              padding: const EdgeInsets.all(15),
                               decoration: BoxDecoration(
                                 color: Colors.white70,
                                 borderRadius: BorderRadius.circular(15),
@@ -78,7 +72,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: CircleAvatar(
                               radius: 30,
                               backgroundColor: Colors.amber[700],
-                              backgroundImage: AssetImage('images/db.jpeg'),
+                              child: ClipOval(
+                                child: SizedBox(
+                                  width: 100,
+                                  height: 100,
+                                  child: Image.asset('images/dp.png'),
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           SlideInUp(
                             globalKey: GlobalKey(),
                             duration: 1.seconds,
-                            child: Text(
+                            child: const Text(
                               'let\'s select your perfect place',
                               style: TextStyle(
                                 fontSize: 36,
@@ -114,11 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
-              Stack(
+              Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'BUY',
                                   style: TextStyle(
                                     fontSize: 18,
@@ -150,11 +150,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     TweenAnimationBuilder<double>(
                                       tween: Tween<double>(begin: 0, end: 1034),
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       builder: (_, value, __) {
                                         return Text(
                                           value.toInt().toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 36,
                                             fontWeight: FontWeight.w800,
                                             color: Colors.white,
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         );
                                       },
                                     ),
-                                    Text(
+                                    const Text(
                                       'offers',
                                       style: TextStyle(
                                         color: Colors.white,
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'RENT',
                                   style: TextStyle(
                                     fontSize: 18,
@@ -203,11 +203,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     TweenAnimationBuilder<double>(
                                       tween: Tween<double>(begin: 0, end: 2212),
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       builder: (_, value, __) {
                                         return Text(
                                           value.toInt().toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 36,
                                             fontWeight: FontWeight.w800,
                                             color: Color(0xFFA5957E),
@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         );
                                       },
                                     ),
-                                    Text(
+                                    const Text(
                                       'offers',
                                       style: TextStyle(
                                         color: Color(0xFFA5957E),
@@ -231,24 +231,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   SlideInUp(
                     globalKey: GlobalKey(),
                     duration: 500.milliseconds,
                     repeat: true,
                     child: Container(
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                       ),
                       child: Column(
                         children: [
-                          DecoratedImageContainer(
+                          const DecoratedImageContainer(
                             imagePath: 'images/13.jpeg',
                             location: 'Gladkova St., 25',
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Expanded(
@@ -266,12 +266,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(
+                                      margin: const EdgeInsets.only(
                                         bottom: 5,
                                         left: 10,
                                         right: 10,
                                       ),
-                                      padding: EdgeInsets.all(3),
+                                      padding: const EdgeInsets.all(3),
                                       decoration: BoxDecoration(
                                         color: Colors.white70,
                                         borderRadius:
@@ -282,8 +282,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(),
-                                          Text('Trefovela St., 43'),
-                                          CircleAvatar(
+                                          const Text('Trefovela St., 43'),
+                                          const CircleAvatar(
                                             radius: 15,
                                             backgroundColor: Colors.white,
                                             child: Icon(
@@ -297,7 +297,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Expanded(
                                 child: Column(
                                   children: [
@@ -316,12 +316,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                             bottom: 5,
                                             left: 10,
                                             right: 10,
                                           ),
-                                          padding: EdgeInsets.all(3),
+                                          padding: const EdgeInsets.all(3),
                                           decoration: BoxDecoration(
                                             color: Colors.white70,
                                             borderRadius:
@@ -332,8 +332,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(),
-                                              Text('Trefovela St., 43'),
-                                              CircleAvatar(
+                                              const Text('Trefovela St., 43'),
+                                              const CircleAvatar(
                                                 radius: 15,
                                                 backgroundColor: Colors.white,
                                                 child: Icon(
@@ -347,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Stack(
                                       alignment: Alignment.bottomCenter,
                                       children: [
@@ -363,12 +363,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                             bottom: 5,
                                             left: 10,
                                             right: 10,
                                           ),
-                                          padding: EdgeInsets.all(3),
+                                          padding: const EdgeInsets.all(3),
                                           decoration: BoxDecoration(
                                             color: Colors.white70,
                                             borderRadius:
@@ -379,8 +379,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(),
-                                              Text('Trefovela St., 43'),
-                                              CircleAvatar(
+                                              const Text('Trefovela St., 43'),
+                                              const CircleAvatar(
                                                 radius: 15,
                                                 backgroundColor: Colors.white,
                                                 child: Icon(
@@ -409,62 +409,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class DecoratedImageContainer extends StatelessWidget {
-  final String imagePath;
-  final String location;
-
-  const DecoratedImageContainer({
-    super.key,
-    required this.imagePath,
-    required this.location,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(imagePath),
-        ),
-        SlideInLeft(
-          globalKey: GlobalKey(),
-          repeat: true,
-          duration: 1.seconds,
-          child: Container(
-            margin: EdgeInsets.only(
-              bottom: 10,
-              left: 20,
-              right: 20,
-            ),
-            padding: EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: Colors.white70,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(),
-                Text(location),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 12,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

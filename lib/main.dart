@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate_on_scroll/flutter_animate_on_scroll.dart';
-import 'package:point/home.dart';
-import 'package:point/map.dart';
+import 'package:point/screens/home_screen.dart';
+import 'package:point/screens/map_screen.dart';
 import 'package:point/widgets/navigation_bar.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   final screens = [
     const MapScreen(),
-    const AnimatedScrollOverlayPage(),
+    const StackedScrollScreen(),
     const HomeScreen(),
     const SizedBox.shrink(),
     const SizedBox.shrink(),
@@ -60,89 +60,94 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class AnimatedScrollOverlayPage extends StatefulWidget {
-  const AnimatedScrollOverlayPage({super.key});
+class StackedScrollScreen extends StatefulWidget {
+  const StackedScrollScreen({super.key});
 
   @override
-  State<AnimatedScrollOverlayPage> createState() =>
-      _AnimatedScrollOverlayPageState();
+  State<StackedScrollScreen> createState() => _StackedScrollScreenState();
 }
 
-class _AnimatedScrollOverlayPageState extends State<AnimatedScrollOverlayPage>
-    with SingleTickerProviderStateMixin {
-  late Animation<Offset> animation;
-  late AnimationController animationController;
+class _StackedScrollScreenState extends State<StackedScrollScreen> {
+  final ScrollController _scrollController = ScrollController();
+  double _scrollOffset = 0.0;
 
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
+    _scrollController.addListener(() {
+      setState(() {
+        _scrollOffset = _scrollController.offset;
+      });
+    });
+  }
 
-    animation = Tween<Offset>(
-            begin: Offset.zero,
-            end: const Offset(-1.5, 0)) //negative to go upwards
-        .animate(animationController);
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    const overlapThreshold = 100.0;
+    final opacity = (_scrollOffset / overlapThreshold).clamp(0.0, 1.0);
+    final topPosition =
+        (overlapThreshold - _scrollOffset).clamp(0.0, overlapThreshold);
+
     return Scaffold(
       body: Stack(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: SlideTransition(
-              position: animation,
-              child: Transform.scale(
-                scale: 0.7,
+          CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              SliverToBoxAdapter(
                 child: Container(
-                  // height: 100,
-                  margin: const EdgeInsets.only(
-                    bottom: 10,
-                    left: 20,
-                    right: 20,
-                  ),
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(),
-                      const Text('Abuja Standard'),
-                      const CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 12,
-                        ),
-                      )
-                    ],
+                  height: 300,
+                  color: Colors.blueAccent,
+                  child: const Center(
+                    child: Text(
+                      'Scroll Up',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
                 ),
               ),
-            ),
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 1000,
+                  color: Colors.greenAccent,
+                  child: const Center(
+                    child: Text(
+                      'Additional Content',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Positioned(
-            bottom: 100,
+            top: topPosition,
             left: 0,
             right: 0,
-            child: TextButton(
-              child: const Text('Animate'),
-              onPressed: () {
-                //the button that trigger the animation
-                if (animation.status == AnimationStatus.completed) {
-                  animationController.reverse();
-                } else if (animation.status == AnimationStatus.dismissed) {
-                  animationController.forward();
-                }
-              },
+            child: IgnorePointer(
+              ignoring: _scrollOffset < overlapThreshold,
+              child: Opacity(
+                opacity: opacity,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  child: Container(
+                    height: 300,
+                    color: Colors.amberAccent,
+                    child: const Center(
+                      child: Text(
+                        'Hidden Widget',
+                        style: TextStyle(color: Colors.black, fontSize: 24),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

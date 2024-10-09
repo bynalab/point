@@ -4,6 +4,7 @@ import 'package:flutter_animate_on_scroll/flutter_animate_on_scroll.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:point/custom_marker.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -29,42 +30,43 @@ class _MapScreenState extends State<MapScreen> {
             ),
             children: [
               TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                urlTemplate:
+                    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.bynalab.point',
               ),
               const MarkerLayer(
                 markers: [
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9445, 30.3350),
                     child: CustomerMakerItem(
                       distance: '10,3 mn P',
                     ),
                   ),
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9349, 30.3420),
                     child: CustomerMakerItem(
                       distance: '11 mn P',
                     ),
                   ),
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9345, 30.3580),
                     child: CustomerMakerItem(
                       distance: '7,8 mn P',
                     ),
                   ),
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9200, 30.3070),
                     child: CustomerMakerItem(
                       distance: '13,3 mn P',
                     ),
                   ),
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9348, 30.3158),
                     child: CustomerMakerItem(
                       distance: '8,5 mn P',
                     ),
                   ),
-                  CustomMaker(
+                  CustomMarker(
                     point: LatLng(59.9410, 30.3141),
                     child: CustomerMakerItem(
                       distance: '6,95 mn P',
@@ -158,10 +160,11 @@ class _MapScreenState extends State<MapScreen> {
                                           },
                                           child: const CircleAvatar(
                                             radius: 25,
-                                            backgroundColor: Colors.white70,
+                                            backgroundColor: Colors.white38,
                                             child: Icon(
                                               Icons.stacked_bar_chart,
                                               size: 20,
+                                              color: Colors.white,
                                             ),
                                           ),
                                         )
@@ -269,10 +272,11 @@ class _MapScreenState extends State<MapScreen> {
                                     onTap: () {},
                                     child: const CircleAvatar(
                                       radius: 25,
-                                      backgroundColor: Colors.white70,
+                                      backgroundColor: Colors.white38,
                                       child: Icon(
                                         Icons.arrow_outward_rounded,
                                         size: 20,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),
@@ -284,7 +288,7 @@ class _MapScreenState extends State<MapScreen> {
                                   child: Container(
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                      color: Colors.white70,
+                                      color: Colors.white38,
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: const Row(
@@ -292,7 +296,7 @@ class _MapScreenState extends State<MapScreen> {
                                         Icon(
                                           Icons.sort,
                                           size: 20,
-                                          color: Color(0xFFA5957E),
+                                          color: Colors.white,
                                         ),
                                         SizedBox(width: 3),
                                         Text(
@@ -300,7 +304,7 @@ class _MapScreenState extends State<MapScreen> {
                                           style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFFA5957E),
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ],
@@ -356,13 +360,4 @@ class CustomerMakerItem extends StatelessWidget {
       ),
     );
   }
-}
-
-class CustomMaker extends Marker {
-  const CustomMaker({
-    required super.point,
-    required super.child,
-    super.height = 40,
-    super.width = 70,
-  });
 }
