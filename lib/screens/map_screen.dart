@@ -162,7 +162,7 @@ class _MapScreenState extends State<MapScreen> {
                                             radius: 25,
                                             backgroundColor: Colors.white38,
                                             child: Icon(
-                                              Icons.stacked_bar_chart,
+                                              Iconsax.layer,
                                               size: 20,
                                               color: Colors.white,
                                             ),
@@ -190,7 +190,7 @@ class _MapScreenState extends State<MapScreen> {
                                           ),
                                           child: const Row(
                                             children: [
-                                              Icon(Iconsax.security_user),
+                                              Icon(Iconsax.shield_security2),
                                               SizedBox(width: 10),
                                               Text('Cosy areas'),
                                             ],
@@ -204,9 +204,17 @@ class _MapScreenState extends State<MapScreen> {
                                           ),
                                           child: const Row(
                                             children: [
-                                              Icon(Icons.wallet_outlined),
+                                              Icon(
+                                                Icons.wallet_outlined,
+                                                color: Color(0xFFFFA500),
+                                              ),
                                               SizedBox(width: 10),
-                                              Text('Price'),
+                                              Text(
+                                                'Price',
+                                                style: TextStyle(
+                                                  color: Color(0xFFFFA500),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -218,7 +226,7 @@ class _MapScreenState extends State<MapScreen> {
                                           ),
                                           child: const Row(
                                             children: [
-                                              Icon(Iconsax.security_user),
+                                              Icon(Icons.home_rounded),
                                               SizedBox(width: 10),
                                               Text('Infrastructure'),
                                             ],
@@ -242,7 +250,7 @@ class _MapScreenState extends State<MapScreen> {
                                             ),
                                             child: const Row(
                                               children: [
-                                                Icon(Iconsax.security_user),
+                                                Icon(Iconsax.layer),
                                                 SizedBox(width: 10),
                                                 Text('Without any layer'),
                                               ],
@@ -270,13 +278,16 @@ class _MapScreenState extends State<MapScreen> {
                                   repeat: true,
                                   child: GestureDetector(
                                     onTap: () {},
-                                    child: const CircleAvatar(
+                                    child: CircleAvatar(
                                       radius: 25,
                                       backgroundColor: Colors.white38,
-                                      child: Icon(
-                                        Icons.arrow_outward_rounded,
-                                        size: 20,
-                                        color: Colors.white,
+                                      child: Transform.rotate(
+                                        angle: 60,
+                                        child: const Icon(
+                                          Iconsax.play,
+                                          size: 20,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -294,7 +305,7 @@ class _MapScreenState extends State<MapScreen> {
                                     child: const Row(
                                       children: [
                                         Icon(
-                                          Icons.sort,
+                                          Icons.list,
                                           size: 20,
                                           color: Colors.white,
                                         ),

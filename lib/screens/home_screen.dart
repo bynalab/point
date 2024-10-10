@@ -265,34 +265,8 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                        bottom: 5,
-                                        left: 10,
-                                        right: 10,
-                                      ),
-                                      padding: const EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white70,
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(),
-                                          const Text('Trefovela St., 43'),
-                                          const CircleAvatar(
-                                            radius: 15,
-                                            backgroundColor: Colors.white,
-                                            child: Icon(
-                                              Icons.arrow_forward_ios_rounded,
-                                              size: 12,
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                    const ImageOverlayDetails(
+                                      location: 'Trefovela St., 43',
                                     ),
                                   ],
                                 ),
@@ -315,35 +289,9 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          margin: const EdgeInsets.only(
-                                            bottom: 5,
-                                            left: 10,
-                                            right: 10,
-                                          ),
-                                          padding: const EdgeInsets.all(3),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white70,
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(),
-                                              const Text('Trefovela St., 43'),
-                                              const CircleAvatar(
-                                                radius: 15,
-                                                backgroundColor: Colors.white,
-                                                child: Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_rounded,
-                                                  size: 12,
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                        const ImageOverlayDetails(
+                                          location: 'Trefovela St., 43',
+                                          offset: 20,
                                         ),
                                       ],
                                     ),
@@ -362,35 +310,9 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          margin: const EdgeInsets.only(
-                                            bottom: 5,
-                                            left: 10,
-                                            right: 10,
-                                          ),
-                                          padding: const EdgeInsets.all(3),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white70,
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(),
-                                              const Text('Trefovela St., 43'),
-                                              const CircleAvatar(
-                                                radius: 15,
-                                                backgroundColor: Colors.white,
-                                                child: Icon(
-                                                  Icons
-                                                      .arrow_forward_ios_rounded,
-                                                  size: 12,
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                        const ImageOverlayDetails(
+                                          location: 'Trefovela St., 43',
+                                          offset: 20,
                                         ),
                                       ],
                                     ),
